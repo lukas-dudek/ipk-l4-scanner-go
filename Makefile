@@ -11,6 +11,8 @@ NixDevShellName:
 
 test:
 	go test -v ./...
+	chmod +x test_scanner.sh
+	./test_scanner.sh
 
 clean:
 	rm -f ipk-L4-scan
