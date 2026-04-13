@@ -60,7 +60,7 @@ func GetLocalIPv6(ifaceName string) (net.IP, error) {
 				continue
 			}
 			// Prefer global unicast over link-local
-			if ip.IsGlobalUnicast() {
+			if ip.IsGlobalUnicast() || ip.IsLoopback() {
 				return ip, nil
 			}
 			// Remember link-local as fallback

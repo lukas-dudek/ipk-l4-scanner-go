@@ -59,7 +59,7 @@ func ScanUDPPort(iface string, srcIP, dstIP net.IP, dstPort int, timeoutMs int, 
 	srcPort := uint16(rand.Intn(64511) + 1024)
 
 	// Open pcap for listening only
-	handle, err := pcap.OpenLive(iface, 65535, false, time.Duration(timeoutMs)*time.Millisecond)
+	handle, err := pcap.OpenLive(iface, 65535, false, 10 * time.Millisecond)
 	if err != nil {
 		return "", fmt.Errorf("pcap open failed: %w", err)
 	}
