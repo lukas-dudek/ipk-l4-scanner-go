@@ -31,8 +31,8 @@ func createUDPHeader(srcIP, dstIP net.IP, srcPort, dstPort uint16) ([]byte, erro
 		}
 	} else {
 		ipv4 := &layers.IPv4{
-			SrcIP:    srcIP,
-			DstIP:    dstIP,
+			SrcIP:    srcIP.To4(),
+			DstIP:    dstIP.To4(),
 			Protocol: layers.IPProtocolUDP,
 		}
 		if err := udp.SetNetworkLayerForChecksum(ipv4); err != nil {

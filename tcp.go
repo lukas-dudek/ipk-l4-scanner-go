@@ -35,8 +35,8 @@ func createTCPSynHeader(srcIP, dstIP net.IP, srcPort, dstPort uint16) ([]byte, e
 		}
 	} else {
 		ipv4 := &layers.IPv4{
-			SrcIP:    srcIP,
-			DstIP:    dstIP,
+			SrcIP:    srcIP.To4(),
+			DstIP:    dstIP.To4(),
 			Protocol: layers.IPProtocolTCP,
 		}
 		if err := tcp.SetNetworkLayerForChecksum(ipv4); err != nil {
